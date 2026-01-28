@@ -225,7 +225,7 @@ html.lenis body {
   background: #ffffff !important;
 }
 
-/* Typing Cursor Blink - crisp on/off */
+/* Typing Cursor Blink - crisp on/off - Forced Update */
 @keyframes blink {
 
   0%,
