@@ -105,7 +105,7 @@ export default function RootLayout({
     },
     award: [
       "NASA International Space Apps Global Nominee",
-      "Dean's First Lister",
+      "Dean's First Honor",
       "Utility Model Patent Pending (EMG Prosthetics)",
       "Pioneer in EEG/EMG Robotics Technology"
     ],

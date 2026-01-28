@@ -11,7 +11,7 @@ const education = {
     university: 'National University',
     degree: 'BS Computer Science with specialization in Machine Learning',
     specialization: '1st Year Student',
-    badges: ['Dean\'s First Lister'],
+    badges: ['Dean\'s First Honor'],
 };
 
 const certificates = [
