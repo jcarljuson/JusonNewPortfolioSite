@@ -163,10 +163,10 @@ export default function About() {
         <section
             ref={sectionRef}
             id="about"
-            className="relative h-[85vh] md:h-screen bg-black overflow-hidden"
+            className="relative h-[70vh] md:h-screen bg-black overflow-hidden"
         >
             {/* Scroll-controlled Video Background */}
-            <div className="absolute inset-0 z-0 flex items-center justify-center bg-black">
+            <div className="absolute inset-0 z-0">
                 <video
                     ref={videoRef}
                     src="/Webp/thewebp_optimized.mp4"
@@ -181,31 +181,31 @@ export default function About() {
             {/* 1. Main Bio Content Overlay */}
             <div
                 ref={contentRef}
-                className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none px-6"
+                className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none px-4 md:px-6"
             >
                 <div className="w-full max-w-4xl pointer-events-auto">
                     {/* Header Group */}
-                    <div className="text-center mb-10">
-                        <h2 className="text-4xl md:text-5xl font-semibold mb-4 text-primary">
+                    <div className="text-center mb-2 md:mb-10">
+                        <h2 className="text-2xl md:text-5xl font-semibold mb-2 md:mb-4 text-primary">
                             About Me
                         </h2>
                     </div>
 
-                    <div ref={blurRef} className="glass-card p-8 md:p-10 backdrop-blur-xl">
-                        <div className="flex items-start gap-4 mb-6">
+                    <div ref={blurRef} className="glass-card p-5 md:p-10 backdrop-blur-xl">
+                        <div className="flex items-start gap-4 mb-4 md:mb-6">
                             <Sparkles className="w-5 h-5 text-secondary flex-shrink-0 mt-1" />
-                            <p className="text-primary leading-relaxed font-normal">
-                                I&apos;m a <span className="font-medium">Machine Learning and Data Science enthusiast/innovator</span>, passionate about building intelligent systems that connect humans, machines, and the universe.
+                            <p className="text-primary leading-relaxed font-normal text-sm md:text-base">
+                                I&apos;m a <span className="font-medium">Machine Learning and Data Science enthusiast/innovator</span>, passionate about building intelligent systems.
                             </p>
                         </div>
 
-                        <div className="space-y-4 mb-6">
+                        <div className="space-y-3 md:space-y-4 mb-4 md:mb-6">
                             {bioHighlights.map((highlight, index) => (
                                 <div key={index} className="flex items-start gap-4">
-                                    <div className="w-9 h-9 rounded-lg glass flex items-center justify-center flex-shrink-0">
-                                        <highlight.icon className="w-4 h-4 text-secondary" />
+                                    <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg glass flex items-center justify-center flex-shrink-0">
+                                        <highlight.icon className="w-3.5 h-3.5 md:w-4 md:h-4 text-secondary" />
                                     </div>
-                                    <p className="text-secondary leading-relaxed font-normal">{highlight.text}</p>
+                                    <p className="text-secondary leading-relaxed font-normal text-xs md:text-base">{highlight.text}</p>
                                 </div>
                             ))}
                         </div>

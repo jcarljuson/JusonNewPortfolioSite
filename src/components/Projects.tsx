@@ -101,8 +101,8 @@ export default function Projects() {
                         opacity: Math.max(0.3, opacity),
                         zIndex: zIndex,
                         width: cardWidth + 'px',
-                        height: isMobile ? '60vh' : 'auto', // Adjust height on mobile
-                        aspectRatio: isMobile ? 'auto' : '16/10'
+                        height: 'auto', // Let aspect ratio drive height on both mobile and desktop
+                        aspectRatio: '16/10' // Force landscape ratio to show full image
                     });
                 });
             };
