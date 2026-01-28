@@ -15,16 +15,17 @@ export default function Hero() {
     useEffect(() => {
         // Typing effect loop
         let currentIndex = 0;
+        let intervalId: NodeJS.Timeout;
+
         const typingDelay = setTimeout(() => {
-            const interval = setInterval(() => {
+            intervalId = setInterval(() => {
                 if (currentIndex <= fullText.length) {
                     setText(fullText.slice(0, currentIndex));
                     currentIndex++;
                 } else {
-                    clearInterval(interval);
+                    clearInterval(intervalId);
                 }
             }, 100); // Typing speed
-            return () => clearInterval(interval);
         }, 500); // Initial delay before typing starts
 
         const ctx = gsap.context(() => {
@@ -54,6 +55,7 @@ export default function Hero() {
         return () => {
             ctx.revert();
             clearTimeout(typingDelay);
+            if (intervalId) clearInterval(intervalId);
         };
     }, []);
 
