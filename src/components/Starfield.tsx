@@ -46,7 +46,7 @@ export default function Starfield() {
                 this.twinkleSpeed = 0.005 + Math.random() * 0.01;
             }
 
-            draw(ctx: CanvasRenderingContext2D, width: number, height: number, mX: number, mY: number) {
+            draw(ctx: CanvasRenderingContext2D, width: number, height: number, mX: number, mY: number, color: string) {
                 // Parallax calculation
                 // Closer stars (higher z) move more than distant stars
                 const offsetX = (mX - width / 2) * PARALLAX_STRENGTH * this.z;
@@ -55,7 +55,7 @@ export default function Starfield() {
                 // Draw Star
                 ctx.beginPath();
                 ctx.arc(this.x + offsetX, this.y + offsetY, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.fillStyle = `rgba(${color}, ${this.opacity})`;
                 ctx.fill();
 
                 // Twinkle effect
@@ -81,8 +81,12 @@ export default function Starfield() {
         const animate = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+            // Check theme for star color (Light Mode = Black stars, Dark Mode = White stars)
+            const isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
+            const starColorRaw = isLightMode ? '0, 0, 0' : '255, 255, 255';
+
             stars.forEach(star => {
-                star.draw(ctx, canvas.width, canvas.height, mouseX, mouseY);
+                star.draw(ctx, canvas.width, canvas.height, mouseX, mouseY, starColorRaw);
             });
 
             animationFrameId = requestAnimationFrame(animate);
