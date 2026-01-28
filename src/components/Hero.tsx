@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 
 export default function Hero() {
@@ -9,35 +9,31 @@ export default function Hero() {
     const subtitleRef = useRef<HTMLParagraphElement>(null);
     const buttonsRef = useRef<HTMLDivElement>(null);
 
+    const [text, setText] = useState('');
+    const fullText = "Jcarl Juson";
+
     useEffect(() => {
+        // Typing effect loop
+        let currentIndex = 0;
+        const typingDelay = setTimeout(() => {
+            const interval = setInterval(() => {
+                if (currentIndex <= fullText.length) {
+                    setText(fullText.slice(0, currentIndex));
+                    currentIndex++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 100); // Typing speed
+            return () => clearInterval(interval);
+        }, 500); // Initial delay before typing starts
+
         const ctx = gsap.context(() => {
-            // Staggered name reveal - split into characters
-            if (nameRef.current) {
-                const text = nameRef.current.innerText;
-                nameRef.current.innerHTML = text
-                    .split('')
-                    .map((char) => `<span class="inline-block">${char === ' ' ? '&nbsp;' : char}</span>`)
-                    .join('');
-
-                gsap.fromTo(
-                    nameRef.current.querySelectorAll('span'),
-                    { opacity: 0, y: 50 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.6,
-                        ease: 'power3.out',
-                        stagger: 0.025,
-                        delay: 0.2,
-                    }
-                );
-            }
-
+            // REMOVED: Old GSAP name animation
             // Subtitle animation
             gsap.fromTo(
                 subtitleRef.current,
                 { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.8 }
+                { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 2.0 } // Delayed to finish after typing
             );
 
             // Buttons animation
@@ -50,12 +46,15 @@ export default function Hero() {
                     duration: 0.5,
                     ease: 'power3.out',
                     stagger: 0.1,
-                    delay: 1.0,
+                    delay: 2.5, // Delayed to finish after typing
                 }
             );
         }, containerRef);
 
-        return () => ctx.revert();
+        return () => {
+            ctx.revert();
+            clearTimeout(typingDelay);
+        };
     }, []);
 
     return (
@@ -70,13 +69,14 @@ export default function Hero() {
 
             {/* Content */}
             <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-                {/* Name */}
+                {/* Name with Typing Effect */}
                 <h1
                     ref={nameRef}
-                    className="text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight mb-6 text-primary" // Adjusted mobile size
+                    className="text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight mb-6 text-primary h-[1.2em]" // Fixed height to prevent layout shift
                     style={{ perspective: '1000px' }}
                 >
-                    Jcarl Juson
+                    {text}
+                    <span className="animate-cursor-blink">|</span>
                 </h1>
 
                 {/* Subtitle */}

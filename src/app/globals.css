@@ -224,3 +224,24 @@ html.lenis body {
 [data-theme="light"] .bg-black {
   background: #ffffff !important;
 }
+
+/* Typing Cursor Blink - crisp on/off */
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-cursor-blink {
+  animation: blink 1s step-end infinite;
+  display: inline-block;
+  font-weight: 100;
+  color: var(--text-primary);
+  margin-left: 2px;
+}
