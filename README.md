@@ -1,6 +1,6 @@
-# Interstellar Portfolio
+# Jcarl Juson's Portfolio
 
-A high-performance, visually stunning portfolio website built for an AI Engineer & Neurotechnologist. Designed with Apple-inspired "liquid glass" aesthetics, deep space cosmology themes, and advanced scroll interactions.
+A high-performance, visually stunning portfolio website by Jcarl Juson. Designed with an Apple-inspired "liquid glass" aesthetics in mind, deep space cosmology themes, and advanced scroll interactions.
 
 ![Hero Section](./public/screenshots/hero.png)
 
