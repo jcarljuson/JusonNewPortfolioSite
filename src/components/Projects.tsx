@@ -51,7 +51,9 @@ export default function Projects() {
             const gap = isMobile ? 20 : 40;
             const totalWidth = cards.length * (cardWidth + gap);
             const screenCenter = window.innerWidth / 2;
-            const initialOffset = screenCenter - cardWidth / 2;
+            // Start 40% to the right on mobile so it doesn't feel "stuck" to the left edge
+            const startOffset = isMobile ? window.innerWidth * 0.40 : 0;
+            const initialOffset = screenCenter - cardWidth / 2 + startOffset;
 
             // Set initial state (Universal)
             gsap.set(containerRef.current, {
@@ -79,7 +81,7 @@ export default function Projects() {
 
             // Card updater function
             const updateCards = (progress: number) => {
-                const scrollDistance = totalWidth - cardWidth;
+                const scrollDistance = totalWidth - cardWidth + startOffset;
                 const xOffset = initialOffset - progress * scrollDistance;
 
                 // Move the entire track
@@ -101,8 +103,8 @@ export default function Projects() {
                         opacity: Math.max(0.3, opacity),
                         zIndex: zIndex,
                         width: cardWidth + 'px',
-                        height: 'auto', // Let aspect ratio drive height on both mobile and desktop
-                        aspectRatio: '16/10' // Force landscape ratio to show full image
+                        height: isMobile ? 'auto' : 'auto', // Let aspect ratio drive height on mobile
+                        aspectRatio: isMobile ? '16/9' : '16/10' // Landscape on mobile to show full image
                     });
                 });
             };
