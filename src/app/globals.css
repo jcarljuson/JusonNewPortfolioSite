@@ -246,22 +246,27 @@ html.lenis body {
   margin-left: 2px;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
+/* Custom Scrollbar - Enhanced Specificity */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
+  /* For horizontal scrollbars if any */
 }
 
-::-webkit-scrollbar-track {
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
   background: var(--background);
 }
 
-::-webkit-scrollbar-thumb {
-  background: #333;
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background-color: #333;
   border-radius: 5px;
   border: 2px solid var(--background);
-  /* Creates padding around thumb */
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
 }
