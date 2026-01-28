@@ -51,8 +51,8 @@ export default function Projects() {
             const gap = isMobile ? 20 : 40;
             const totalWidth = cards.length * (cardWidth + gap);
             const screenCenter = window.innerWidth / 2;
-            // Start 40% to the right on mobile so it doesn't feel "stuck" to the left edge
-            const startOffset = isMobile ? window.innerWidth * 0.40 : 0;
+            // Start 15% to the right on both mobile and desktop for better initial visibility
+            const startOffset = window.innerWidth * 0.15;
             const initialOffset = screenCenter - cardWidth / 2 + startOffset;
 
             // Set initial state (Universal)
@@ -81,7 +81,8 @@ export default function Projects() {
 
             // Card updater function
             const updateCards = (progress: number) => {
-                const scrollDistance = totalWidth - cardWidth + startOffset;
+                // Precise distance to center the last card at the end
+                const scrollDistance = (cards.length - 1) * (cardWidth + gap) + startOffset;
                 const xOffset = initialOffset - progress * scrollDistance;
 
                 // Move the entire track
@@ -116,7 +117,7 @@ export default function Projects() {
             ScrollTrigger.create({
                 trigger: sectionRef.current,
                 start: 'top top',
-                end: '+=' + (isMobile ? window.innerHeight * 3 : window.innerHeight * 4), // Shorter scroll on mobile
+                end: '+=' + (isMobile ? window.innerHeight * 2.5 : window.innerHeight * 4), // Balanced scroll length
                 pin: true,
                 scrub: 1.5,
                 onUpdate: (self) => updateCards(self.progress),
