@@ -15,7 +15,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <main className="relative bg-black min-h-screen overflow-x-hidden">
+    <main className="relative min-h-screen overflow-x-hidden">
       {/* System Preloader - Blocks view until done */}
       {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
 
