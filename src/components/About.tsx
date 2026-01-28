@@ -85,12 +85,12 @@ export default function About() {
                 1 // Start fading halfway through the movement
             );
 
-            // Expertise Cards: Fade IN and Move UP (45% - 100%)
+            // Expertise Cards: Fade IN and Move UP (40% - 100%)
             tl.fromTo(
                 cardsRef.current,
-                { opacity: 0, y: 100 },
-                { opacity: 1, y: 0, duration: 2 },
-                2.5 // Start after bio box is mostly gone
+                { opacity: 0, y: 300 }, // Start lower (was 100)
+                { opacity: 1, y: 0, duration: 2.5 }, // Slower ascent (was 2)
+                2.0 // Start earlier (was 2.5) so it rises slowly
             );
 
         }, sectionRef);
