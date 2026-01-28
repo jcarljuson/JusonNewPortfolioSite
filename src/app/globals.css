@@ -217,9 +217,9 @@ html.lenis body {
 }
 
 /* Light mode section backgrounds */
-[data-theme="light"] section {
+/* [data-theme="light"] section {
   background: var(--background);
-}
+} REMOVED: Breaks transparency for Starfield layers */
 
 [data-theme="light"] .bg-black {
   background: #ffffff !important;

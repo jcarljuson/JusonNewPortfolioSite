@@ -134,7 +134,6 @@ export default function Starfield() {
             className="fixed inset-0 z-0 pointer-events-none"
             style={{
                 background: 'transparent', // Let CSS background show through
-                background: 'transparent', // Let CSS background show through
                 // mixBlendMode: 'screen' // REMOVED: Caused black stars to be invisible in light mode
             }}
         />
