@@ -43,104 +43,80 @@ export default function Projects() {
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            ScrollTrigger.matchMedia({
-                // Desktop: Horizontal Pinning & 3D Effect
-                "(min-width: 768px)": function () {
-                    const cards = gsap.utils.toArray('.project-card') as HTMLElement[];
-                    const cardWidth = 450;
-                    const gap = 40;
-                    const totalWidth = cards.length * (cardWidth + gap);
-                    const screenCenter = window.innerWidth / 2;
-                    const initialOffset = screenCenter - cardWidth / 2;
+            const isMobile = window.innerWidth < 768;
+            const cards = gsap.utils.toArray('.project-card') as HTMLElement[];
 
-                    // Set initial state
-                    gsap.set(containerRef.current, {
-                        position: 'absolute',
-                        inset: 0,
-                        display: 'flex',
-                        alignItems: 'center'
+            // Responsive configuration
+            const cardWidth = isMobile ? window.innerWidth * 0.85 : 450;
+            const gap = isMobile ? 20 : 40;
+            const totalWidth = cards.length * (cardWidth + gap);
+            const screenCenter = window.innerWidth / 2;
+            const initialOffset = screenCenter - cardWidth / 2;
+
+            // Set initial state (Universal)
+            gsap.set(containerRef.current, {
+                position: 'absolute',
+                inset: 0,
+                display: 'flex',
+                alignItems: 'center',
+                perspective: '1000px', // Ensure perspective is set
+                zIndex: 1
+            });
+            gsap.set(sectionRef.current, {
+                overflow: 'hidden',
+                height: '100vh',
+                position: 'relative' // Ensure pin works
+            });
+            gsap.set(cardsRef.current, {
+                x: initialOffset,
+                flexDirection: 'row',
+                gap: gap + 'px',
+                padding: 0,
+                width: totalWidth + 500, // Ensure ample width for container
+                transformStyle: 'preserve-3d'
+            });
+
+            // Card updater function
+            const updateCards = (progress: number) => {
+                const scrollDistance = totalWidth - cardWidth;
+                const xOffset = initialOffset - progress * scrollDistance;
+
+                // Move the entire track
+                gsap.set(cardsRef.current, { x: xOffset });
+
+                cards.forEach((card, index) => {
+                    const cardCenterX = initialOffset + index * (cardWidth + gap) + cardWidth / 2 + xOffset - initialOffset;
+                    const offset = (cardCenterX - screenCenter) / screenCenter;
+
+                    // 3D Transformations
+                    const rotateY = offset * (isMobile ? 20 : 25); // Slightly less rotation on mobile
+                    const scale = 1 - Math.abs(offset) * (isMobile ? 0.1 : 0.12);
+                    const opacity = 1 - Math.abs(offset) * (isMobile ? 0.3 : 0.35);
+                    const zIndex = Math.round((1 - Math.abs(offset)) * 10);
+
+                    gsap.set(card, {
+                        rotateY: rotateY,
+                        scale: Math.max(0.7, scale),
+                        opacity: Math.max(0.3, opacity),
+                        zIndex: zIndex,
+                        width: cardWidth + 'px',
+                        height: isMobile ? '60vh' : 'auto', // Adjust height on mobile
+                        aspectRatio: isMobile ? 'auto' : '16/10'
                     });
-                    gsap.set(sectionRef.current, {
-                        overflow: 'hidden',
-                        height: '100vh'
-                    });
-                    gsap.set(cardsRef.current, {
-                        x: initialOffset,
-                        flexDirection: 'row',
-                        gap: gap + 'px',
-                        padding: 0
-                    });
+                });
+            };
 
-                    const updateCards = (progress: number) => {
-                        const scrollDistance = totalWidth - cardWidth;
-                        const xOffset = initialOffset - progress * scrollDistance;
+            // Initialize immediately
+            updateCards(0);
 
-                        gsap.set(cardsRef.current, { x: xOffset });
-
-                        cards.forEach((card, index) => {
-                            const cardCenterX = initialOffset + index * (cardWidth + gap) + cardWidth / 2 + xOffset - initialOffset;
-                            const offset = (cardCenterX - screenCenter) / screenCenter;
-
-                            const rotateY = offset * 25;
-                            const scale = 1 - Math.abs(offset) * 0.12;
-                            const opacity = 1 - Math.abs(offset) * 0.35;
-                            const zIndex = Math.round((1 - Math.abs(offset)) * 10);
-
-                            gsap.set(card, {
-                                rotateY: rotateY,
-                                scale: Math.max(0.7, scale),
-                                opacity: Math.max(0.3, opacity),
-                                zIndex: zIndex,
-                                width: '450px',
-                            });
-                        });
-                    };
-
-                    // Set initial state immediately to prevent "snap"
-                    updateCards(0);
-
-                    const scrollTrigger = ScrollTrigger.create({
-                        trigger: sectionRef.current,
-                        start: 'top top',
-                        end: '+=' + window.innerHeight * 4,
-                        pin: true,
-                        scrub: 1.5, // Even smoother
-                        onUpdate: (self) => updateCards(self.progress),
-                    });
-                },
-
-                // Mobile: Vertical Stack (Native Scrolling)
-                "(max-width: 767px)": function () {
-                    // Reset styling for natural flow
-                    gsap.set(sectionRef.current, {
-                        height: 'auto',  // Let content dictate height
-                        overflow: 'visible'
-                    });
-                    gsap.set(containerRef.current, {
-                        position: 'relative',
-                        inset: 'auto',
-                        display: 'block'
-                    });
-                    gsap.set(cardsRef.current, {
-                        x: 0,
-                        flexDirection: 'column',
-                        gap: '2rem',
-                        padding: '6rem 1.5rem 4rem 1.5rem' // Add padding for header/spacing
-                    });
-
-                    // Reset card styles
-                    const cards = gsap.utils.toArray('.project-card') as HTMLElement[];
-                    cards.forEach(card => {
-                        gsap.set(card, {
-                            rotateY: 0,
-                            scale: 1,
-                            opacity: 1,
-                            zIndex: 1,
-                            width: '100%', // Full width on mobile
-                            x: 0
-                        });
-                    });
-                }
+            // Create ScrollTrigger
+            ScrollTrigger.create({
+                trigger: sectionRef.current,
+                start: 'top top',
+                end: '+=' + (isMobile ? window.innerHeight * 3 : window.innerHeight * 4), // Shorter scroll on mobile
+                pin: true,
+                scrub: 1.5,
+                onUpdate: (self) => updateCards(self.progress),
             });
         }, sectionRef);
 
@@ -172,7 +148,7 @@ export default function Projects() {
                             key={project.id}
                             className="project-card glass-card overflow-hidden cursor-pointer group flex-shrink-0 relative"
                             style={{
-                                aspectRatio: '16/10',
+                                // aspectRatio: '16/10', // Handled by GSAP now
                                 transformStyle: 'preserve-3d',
                             }}
                         >

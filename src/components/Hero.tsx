@@ -73,7 +73,7 @@ export default function Hero() {
                 {/* Name */}
                 <h1
                     ref={nameRef}
-                    className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight mb-6 text-primary"
+                    className="text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight mb-6 text-primary" // Adjusted mobile size
                     style={{ perspective: '1000px' }}
                 >
                     Jcarl Juson
