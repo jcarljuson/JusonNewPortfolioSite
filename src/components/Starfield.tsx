@@ -111,8 +111,10 @@ export default function Starfield() {
 
                 // Map tilt to screen coordinates
                 // Center (0 tilt) = Center of screen
-                mouseX = (xTilt / 45) * (window.innerWidth / 2) + (window.innerWidth / 2);
-                mouseY = (yTilt / 45) * (window.innerHeight / 2) + (window.innerHeight / 2);
+                // AMPLIFIED by 5x to ensure visible movement on small screens (since PARALLAX_STRENGTH is low)
+                const amplification = 5;
+                mouseX = ((xTilt / 45) * (window.innerWidth / 2) * amplification) + (window.innerWidth / 2);
+                mouseY = ((yTilt / 45) * (window.innerHeight / 2) * amplification) + (window.innerHeight / 2);
             }
         };
 
