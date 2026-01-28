@@ -163,10 +163,10 @@ export default function About() {
         <section
             ref={sectionRef}
             id="about"
-            className="relative h-screen bg-black overflow-hidden"
+            className="relative h-[85vh] md:h-screen bg-black overflow-hidden"
         >
             {/* Scroll-controlled Video Background */}
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 z-0 flex items-center justify-center bg-black">
                 <video
                     ref={videoRef}
                     src="/Webp/thewebp_optimized.mp4"

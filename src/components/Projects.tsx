@@ -60,7 +60,8 @@ export default function Projects() {
                 display: 'flex',
                 alignItems: 'center',
                 perspective: '1000px', // Ensure perspective is set
-                zIndex: 1
+                zIndex: 1,
+                paddingTop: isMobile ? '120px' : '0' // Push cards down on mobile to avoid header overlap
             });
             gsap.set(sectionRef.current, {
                 overflow: 'hidden',
