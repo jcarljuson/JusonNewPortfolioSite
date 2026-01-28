@@ -131,7 +131,7 @@ export default function Projects() {
         <section
             ref={sectionRef}
             id="projects"
-            className="relative min-h-screen bg-black"
+            className="relative min-h-screen bg-transparent"
             style={{ zIndex: 0 }}
         >
             {/* Section Title */}

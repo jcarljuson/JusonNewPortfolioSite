@@ -3,7 +3,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 
-export default function Hero() {
+interface HeroProps {
+    startAnimation?: boolean;
+}
+
+export default function Hero({ startAnimation = true }: HeroProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const nameRef = useRef<HTMLHeadingElement>(null);
     const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -13,6 +17,8 @@ export default function Hero() {
     const fullText = "Jcarl Juson";
 
     useEffect(() => {
+        if (!startAnimation) return;
+
         // Typing effect loop
         let currentIndex = 0;
         let intervalId: NodeJS.Timeout;
@@ -57,7 +63,7 @@ export default function Hero() {
             clearTimeout(typingDelay);
             if (intervalId) clearInterval(intervalId);
         };
-    }, []);
+    }, [startAnimation]);
 
     return (
         <section

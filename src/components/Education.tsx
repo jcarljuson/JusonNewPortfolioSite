@@ -71,11 +71,11 @@ export default function Education() {
         <section
             ref={sectionRef}
             id="education"
-            className="relative py-32 bg-black"
+            className="relative py-32 bg-transparent"
             style={{ zIndex: 50 }}
         >
-            {/* Solid background to cover projects */}
-            <div className="absolute inset-0 bg-black" />
+            {/* Transparent background to show stars */}
+            {/* <div className="absolute inset-0 bg-black" /> */}
 
             <div className="relative z-10 max-w-7xl mx-auto px-6">
                 {/* Education Section */}
