@@ -93,15 +93,33 @@ export default function Starfield() {
             mouseY = e.clientY;
         };
 
+        const handleOrientation = (e: DeviceOrientationEvent) => {
+            // Gamma: Left/Right tilt (-90 to 90)
+            // Beta: Front/Back tilt (-180 to 180)
+            // We map these angles to screen coordinates to mimic mouse movement
+            if (e.gamma !== null && e.beta !== null) {
+                // Amplify the tilt effect slightly for better responsiveness
+                const xTilt = Math.min(Math.max(e.gamma, -45), 45); // Clamp to +/- 45 degrees
+                const yTilt = Math.min(Math.max(e.beta, -45), 45);  // Clamp to +/- 45 degrees
+
+                // Map tilt to screen coordinates
+                // Center (0 tilt) = Center of screen
+                mouseX = (xTilt / 45) * (window.innerWidth / 2) + (window.innerWidth / 2);
+                mouseY = (yTilt / 45) * (window.innerHeight / 2) + (window.innerHeight / 2);
+            }
+        };
+
         // Initialize
         resize();
         window.addEventListener('resize', resize);
         window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('deviceorientation', handleOrientation);
         animate();
 
         return () => {
             window.removeEventListener('resize', resize);
             window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('deviceorientation', handleOrientation);
             cancelAnimationFrame(animationFrameId);
         };
     }, []);
