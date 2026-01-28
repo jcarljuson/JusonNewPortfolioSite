@@ -166,7 +166,7 @@ export default function About() {
             className="relative h-screen bg-black overflow-hidden"
         >
             {/* Scroll-controlled Video Background */}
-            <div className="absolute z-0 w-full h-[60%] top-1/2 -translate-y-1/2 md:h-full md:top-0 md:translate-y-0 md:inset-0">
+            <div className="absolute z-0 w-full h-[50%] top-1/2 -translate-y-1/2 md:h-full md:top-0 md:translate-y-0 md:inset-0">
                 <video
                     ref={videoRef}
                     src="/Webp/thewebp_optimized.mp4"
