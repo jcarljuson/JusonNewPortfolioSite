@@ -82,7 +82,7 @@ export default function Education() {
                 <div className="mb-24 relative py-12 -mx-[calc((100vw-100%)/2)] px-[calc((100vw-100%)/2)]">
                     {/* Local Black Background & Stars */}
                     {/* Local Black Background (Stars from global canvas will invert to white here) */}
-                    <div className="absolute inset-0 -z-10" style={{ backgroundColor: '#111111' }} />
+                    <div className="absolute inset-0 -z-10 bg-[#111111] dark:bg-[#000000]" />
 
                     <h2 className="text-4xl md:text-5xl font-semibold mb-16 text-center text-white relative z-10">
                         Education
@@ -162,7 +162,7 @@ export default function Education() {
                 <div className="mt-24 relative py-12 -mx-[calc((100vw-100%)/2)] px-[calc((100vw-100%)/2)]">
                     {/* Local Black Background & Stars */}
                     {/* Local Black Background (Stars from global canvas will invert to white here) */}
-                    <div className="absolute inset-0 -z-10" style={{ backgroundColor: '#111111' }} />
+                    <div className="absolute inset-0 -z-10 bg-[#111111] dark:bg-[#000000]" />
 
                     <h2 className="text-4xl md:text-5xl font-semibold mb-16 text-center text-white relative z-10">
                         Documentations & Patents
