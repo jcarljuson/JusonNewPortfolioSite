@@ -163,7 +163,7 @@ export default function About() {
         <section
             ref={sectionRef}
             id="about"
-            className="relative h-screen bg-black overflow-hidden"
+            className="relative h-screen bg-[#111111] dark:bg-black overflow-hidden"
         >
             {/* Scroll-controlled Video Background */}
             <div className="absolute z-0 w-full h-[50%] top-1/2 -translate-y-1/2 md:h-full md:top-0 md:translate-y-0 md:inset-0">
@@ -175,7 +175,7 @@ export default function About() {
                     playsInline
                     preload="auto"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black via-black/50 to-black pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#111111] via-[#111111]/50 to-[#111111] dark:from-black dark:via-black/50 dark:to-black pointer-events-none" />
             </div>
 
             {/* 1. Main Bio Content Overlay */}
