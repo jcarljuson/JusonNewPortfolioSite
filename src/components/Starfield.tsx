@@ -36,46 +36,58 @@ export default function Starfield() {
             size: number;
             opacity: number;
             twinkleSpeed: number;
+            vx: number; // Velocity X
+            vy: number; // Velocity Y
 
             constructor(width: number, height: number) {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.z = Math.random(); // Depth: 0 to 1
+                this.z = Math.random();
                 this.size = Math.random() * 1.5;
                 this.opacity = Math.random();
                 this.twinkleSpeed = 0.005 + Math.random() * 0.01;
+                // Random slow drift
+                this.vx = (Math.random() - 0.5) * 0.15; // Slow horizontal drift
+                this.vy = (Math.random() - 0.5) * 0.15; // Slow vertical drift
             }
 
-            draw(ctx: CanvasRenderingContext2D, width: number, height: number, mX: number, mY: number, color: string, isLightMode: boolean) {
-                // Parallax calculation
-                // Closer stars (higher z) move more than distant stars
-                const offsetX = (mX - width / 2) * PARALLAX_STRENGTH * this.z;
-                const offsetY = (mY - height / 2) * PARALLAX_STRENGTH * this.z;
+            update(width: number, height: number) {
+                // Apply velocity
+                this.x += this.vx;
+                this.y += this.vy;
 
-                // Opacity Boost for Light Mode (Black on White needs more contrast)
-                const opacity = isLightMode ? Math.min(this.opacity + 0.3, 1) : this.opacity;
+                // Wrap around screen
+                if (this.x < 0) this.x = width;
+                if (this.x > width) this.x = 0;
+                if (this.y < 0) this.y = height;
+                if (this.y > height) this.y = 0;
 
-                // Draw Star
-                ctx.beginPath();
-                ctx.arc(this.x + offsetX, this.y + offsetY, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${color}, ${opacity})`;
-                ctx.fill();
-
-                // Twinkle effect
+                // Twinkle
                 this.opacity += this.twinkleSpeed;
                 if (this.opacity > 1 || this.opacity < 0.1) {
                     this.twinkleSpeed = -this.twinkleSpeed;
                 }
             }
+
+            draw(ctx: CanvasRenderingContext2D, width: number, height: number, mX: number, mY: number, color: string) {
+                // Parallax calculation
+                const offsetX = (mX - width / 2) * PARALLAX_STRENGTH * this.z;
+                const offsetY = (mY - height / 2) * PARALLAX_STRENGTH * this.z;
+
+                // Draw Star
+                ctx.beginPath();
+                ctx.arc(this.x + offsetX, this.y + offsetY, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${color}, ${this.opacity})`;
+                ctx.fill();
+            }
         }
 
         const resize = () => {
+            // ... existing resize logic ...
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-
-            // Re-generate stars on resize to fill screen
             stars = [];
-            const count = window.innerWidth < 768 ? STAR_COUNT / 2 : STAR_COUNT; // Less stars on mobile
+            const count = window.innerWidth < 768 ? STAR_COUNT / 2 : STAR_COUNT;
             for (let i = 0; i < count; i++) {
                 stars.push(new Star(canvas.width, canvas.height));
             }
@@ -84,12 +96,12 @@ export default function Starfield() {
         const animate = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Check theme for star color (Light Mode = Black stars, Dark Mode = White stars)
-            const isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
-            const starColorRaw = isLightMode ? '0, 0, 0' : '255, 255, 255';
+            // Stars always White (Difference mode handles color)
+            const starColorRaw = '255, 255, 255';
 
             stars.forEach(star => {
-                star.draw(ctx, canvas.width, canvas.height, mouseX, mouseY, starColorRaw, isLightMode);
+                star.update(canvas.width, canvas.height); // Update position
+                star.draw(ctx, canvas.width, canvas.height, mouseX, mouseY, starColorRaw);
             });
 
             animationFrameId = requestAnimationFrame(animate);
@@ -136,10 +148,10 @@ export default function Starfield() {
     return (
         <canvas
             ref={canvasRef}
-            className="fixed inset-0 z-0 pointer-events-none"
+            className="fixed top-0 left-0 w-full h-full pointer-events-none transition-opacity duration-1000"
             style={{
-                background: 'transparent', // Let CSS background show through
-                // mixBlendMode: 'screen' // REMOVED: Caused black stars to be invisible in light mode
+                zIndex: 60, // Force on top of everything to ensure blend mode works globally
+                mixBlendMode: 'difference' // Magic: White stars -> Black on White BG, White on Black BG
             }}
         />
     );

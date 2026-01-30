@@ -77,7 +77,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
     return (
         <div
             ref={containerRef}
-            className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center text-green-500 font-mono"
+            className="fixed inset-0 z-[100] bg-white dark:bg-black flex flex-col items-center justify-center text-black dark:text-green-500 font-mono"
         >
             <div className="w-full max-w-md px-6">
                 {/* Boot Log */}
@@ -92,9 +92,9 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                 </div>
 
                 {/* Progress Bar */}
-                <div className="w-full h-1 bg-green-900/30 rounded-full overflow-hidden">
+                <div className="w-full h-1 bg-gray-200 dark:bg-green-900/30 rounded-full overflow-hidden">
                     <div
-                        className="h-full bg-green-500 transition-all duration-100 ease-out"
+                        className="h-full bg-black dark:bg-green-500 transition-all duration-100 ease-out"
                         style={{ width: `${Math.min(progress, 100)}%` }}
                     />
                 </div>

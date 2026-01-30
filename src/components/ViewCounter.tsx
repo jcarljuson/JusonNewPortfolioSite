@@ -13,11 +13,10 @@ export default function ViewCounter() {
         const fetchViews = async () => {
             try {
                 // "hit" endpoint increments and returns the new value
-                // Using a fallback key if domain is not yet registered, but usually it auto-creates.
-                // We'll use 'jcarl.us' as the namespace.
-                const response = await fetch('https://api.countapi.xyz/hit/jcarl.us/visits');
+                // Using counterapi.dev as a reliable alternative
+                const response = await fetch('https://api.counterapi.dev/v1/jcarl.us/visits/up');
                 const data = await response.json();
-                setViews(data.value);
+                setViews(data.count); // counterapi.dev returns 'count', not 'value'
             } catch (error) {
                 console.error('Error fetching view count:', error);
                 // Fallback to a static number or null if offline/blocked
@@ -31,11 +30,16 @@ export default function ViewCounter() {
     if (views === null) return null; // Hide if loading or error
 
     return (
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors cursor-default group">
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105 cursor-default group backdrop-blur-md">
             <Eye className="w-3.5 h-3.5 text-secondary group-hover:text-primary transition-colors" />
-            <span className="text-xs font-medium text-secondary group-hover:text-primary tabular-nums transition-colors">
-                {views.toLocaleString()}
-            </span>
+            <div className="flex items-center text-xs font-medium text-secondary group-hover:text-primary transition-colors">
+                <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 whitespace-nowrap">
+                    Total Views:&nbsp;
+                </span>
+                <span className="tabular-nums">
+                    {views.toLocaleString()}
+                </span>
+            </div>
         </div>
     );
 }

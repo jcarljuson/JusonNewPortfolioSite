@@ -73,22 +73,17 @@ export default function Education() {
             id="education"
             className="relative py-32 bg-transparent"
         >
-            {/* Removed Global Black Background to allow mixed sections */}
-
-            {/* Transparent background to show stars */}
+            {/* Global Background for the entire section (Matte Black in Light, Pure Black in Dark) */}
+            <div className="absolute inset-0 -z-10 bg-[#111111] dark:bg-[#000000]" />
 
             <div className="relative z-10 max-w-7xl mx-auto px-6">
                 {/* Education Section */}
-                <div className="mb-24 relative py-12 -mx-[calc((100vw-100%)/2)] px-[calc((100vw-100%)/2)]">
-                    {/* Local Black Background & Stars */}
-                    {/* Local Black Background (Stars from global canvas will invert to white here) */}
-                    <div className="absolute inset-0 -z-10 bg-[#111111] dark:bg-[#000000]" />
-
-                    <h2 className="text-4xl md:text-5xl font-semibold mb-16 text-center text-white relative z-10">
+                <div className="mb-24">
+                    <h2 className="text-4xl md:text-5xl font-semibold mb-16 text-center text-white">
                         Education
                     </h2>
 
-                    <div className="edu-card glass-card p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 opacity-0 bg-white/5 border border-white/10 max-w-7xl mx-auto">
+                    <div className="edu-card glass-card p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 opacity-0 bg-white/5 border border-white/10">
                         {/* University Logo */}
                         <img
                             src="/nu-logo.png"
@@ -121,7 +116,7 @@ export default function Education() {
 
                 {/* Certificates Section */}
                 <div>
-                    <h2 className="text-4xl md:text-5xl font-semibold mb-16 text-center text-primary">
+                    <h2 className="text-4xl md:text-5xl font-semibold mb-16 text-center text-white">
                         Honors & Certificates
                     </h2>
 
@@ -129,7 +124,7 @@ export default function Education() {
                         {certificates.map((cert, index) => (
                             <div
                                 key={index}
-                                className="edu-card glass-card overflow-hidden group cursor-pointer opacity-0 flex flex-col h-full"
+                                className="edu-card glass-card overflow-hidden group cursor-pointer opacity-0 flex flex-col h-full bg-white/5 border border-white/10"
                             >
                                 {/* Image Container */}
                                 <div className="h-64 w-full relative overflow-hidden bg-white/5">
@@ -144,11 +139,11 @@ export default function Education() {
 
                                 {/* Content */}
                                 <div className="p-6 flex-grow flex flex-col">
-                                    <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors text-primary line-clamp-2">
+                                    <h3 className="text-lg font-bold mb-2 group-hover:text-blue-400 transition-colors text-white line-clamp-2">
                                         {cert.title}
                                     </h3>
-                                    <p className="text-secondary text-sm mb-1 font-medium">{cert.organization}</p>
-                                    <div className="mt-auto flex justify-between items-center text-xs text-secondary/60 pt-4">
+                                    <p className="text-gray-400 text-sm mb-1 font-medium">{cert.organization}</p>
+                                    <div className="mt-auto flex justify-between items-center text-xs text-gray-500 pt-4">
                                         <span>{cert.year}</span>
                                         {cert.note && <span className="text-emerald-400 font-semibold">{cert.note}</span>}
                                     </div>
@@ -159,12 +154,8 @@ export default function Education() {
                 </div>
 
                 {/* Patents Section */}
-                <div className="mt-24 relative py-12 -mx-[calc((100vw-100%)/2)] px-[calc((100vw-100%)/2)]">
-                    {/* Local Black Background & Stars */}
-                    {/* Local Black Background (Stars from global canvas will invert to white here) */}
-                    <div className="absolute inset-0 -z-10 bg-[#111111] dark:bg-[#000000]" />
-
-                    <h2 className="text-4xl md:text-5xl font-semibold mb-16 text-center text-white relative z-10">
+                <div className="mt-24">
+                    <h2 className="text-4xl md:text-5xl font-semibold mb-16 text-center text-white">
                         Documentations & Patents
                     </h2>
 

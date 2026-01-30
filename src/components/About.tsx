@@ -55,7 +55,7 @@ export default function About() {
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: 'top top',
-                    end: '+=400%', // 4x screen height scroll
+                    end: '+=150%', // Reduced from 400% to 150% (Scrolling speed up)
                     pin: true,
                     scrub: 1, // Increased from 0.1 for smoother "butter" feel
                 }
@@ -126,7 +126,7 @@ export default function About() {
                 ScrollTrigger.create({
                     trigger: sectionRef.current,
                     start: 'top top',
-                    end: '+=400%', // Match main timeline
+                    end: '+=150%', // Match main timeline (1.5x screen height)
                     scrub: 0.1,    // Smooth scrubbing
                     onUpdate: (self) => {
                         try {
@@ -175,7 +175,7 @@ export default function About() {
                     playsInline
                     preload="auto"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-[var(--background)] via-[var(--background)]/50 to-[var(--background)] pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black via-black/50 to-black pointer-events-none" />
             </div>
 
             {/* 1. Main Bio Content Overlay */}
@@ -186,32 +186,32 @@ export default function About() {
                 <div className="w-full max-w-4xl pointer-events-auto">
                     {/* Header Group */}
                     <div className="text-center mb-10">
-                        <h2 className="text-4xl md:text-5xl font-semibold mb-4 text-primary">
+                        <h2 className="text-4xl md:text-5xl font-semibold mb-4 text-white">
                             About Me
                         </h2>
                     </div>
 
                     <div ref={blurRef} className="glass-card p-8 md:p-10 backdrop-blur-xl">
                         <div className="flex items-start gap-4 mb-6">
-                            <Sparkles className="w-5 h-5 text-secondary flex-shrink-0 mt-1" />
-                            <p className="text-primary leading-relaxed font-normal">
-                                I&apos;m a <span className="font-medium">Machine Learning and Data Science enthusiast/innovator</span>, passionate about building intelligent systems that connect humans, machines, and the universe.
+                            <Sparkles className="w-5 h-5 text-gray-300 flex-shrink-0 mt-1" />
+                            <p className="text-white leading-relaxed font-normal">
+                                I&apos;m a <span className="font-medium text-white">Machine Learning and Data Science enthusiast/innovator</span>, passionate about building intelligent systems that connect humans, machines, and the universe.
                             </p>
                         </div>
 
                         <div className="space-y-4 mb-6">
                             {bioHighlights.map((highlight, index) => (
                                 <div key={index} className="flex items-start gap-4">
-                                    <div className="w-9 h-9 rounded-lg glass flex items-center justify-center flex-shrink-0">
-                                        <highlight.icon className="w-4 h-4 text-secondary" />
+                                    <div className="w-9 h-9 rounded-lg glass flex items-center justify-center flex-shrink-0 bg-white/5 border border-white/10">
+                                        <highlight.icon className="w-4 h-4 text-gray-300" />
                                     </div>
-                                    <p className="text-secondary leading-relaxed font-normal">{highlight.text}</p>
+                                    <p className="text-gray-300 leading-relaxed font-normal">{highlight.text}</p>
                                 </div>
                             ))}
                         </div>
 
-                        <div className="pt-4 border-t border-white/5">
-                            <p className="text-tertiary italic text-center text-sm font-normal">
+                        <div className="pt-4 border-t border-white/10">
+                            <p className="text-gray-400 italic text-center text-sm font-normal">
                                 &quot;I thrive on projects that merge neuroscience, robotics, and artificial intelligence—building technology that&apos;s smart, adaptive, and deeply human-centered.&quot;
                             </p>
                         </div>
@@ -228,10 +228,10 @@ export default function About() {
                 <div className="w-full max-w-6xl pointer-events-auto pb-10">
                     <div className="grid md:grid-cols-3 gap-6">
                         {expertiseAreas.map((area, index) => (
-                            <div key={index} className="glass-card p-6 flex flex-col items-center text-center backdrop-blur-md">
-                                <area.icon className="w-8 h-8 text-secondary mb-3" />
-                                <h3 className="text-lg font-medium text-primary mb-2">{area.title}</h3>
-                                <p className="text-sm text-secondary leading-relaxed">{area.description}</p>
+                            <div key={index} className="glass-card p-6 flex flex-col items-center text-center backdrop-blur-md bg-white/5 border border-white/10">
+                                <area.icon className="w-8 h-8 text-gray-300 mb-3" />
+                                <h3 className="text-lg font-medium text-white mb-2">{area.title}</h3>
+                                <p className="text-sm text-gray-300 leading-relaxed">{area.description}</p>
                             </div>
                         ))}
                     </div>
