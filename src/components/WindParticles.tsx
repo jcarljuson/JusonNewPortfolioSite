@@ -45,20 +45,19 @@ export default function WindParticles() {
             }
 
             update(velocity: number) {
-                // Velocity > 0 = Scrolling Down -> Wind goes UP
-                // Velocity < 0 = Scrolling Up -> Wind goes DOWN
+                // Velocity > 0 = Scrolling Down -> Cards move Left -> Wind streaks RIGHT
+                // Velocity < 0 = Scrolling Up -> Cards move Right -> Wind streaks LEFT
 
                 // Sensitivity to scroll
                 const draggingFactor = velocity * 0.15;
 
-                // Update Y position
-                // We subtract draggingFactor because if we scroll down (positive velocity),
-                // we want the world to move UP relative to us.
-                this.y -= (this.speed + draggingFactor);
+                // Update X position
+                // We ADD draggingFactor to move Opposite to the content flow (Content moves Left, Wind moves Right)
+                this.x += (this.speed + draggingFactor);
 
                 // Wrap around screen
-                if (this.y < -this.length) this.y = height + this.length;
-                if (this.y > height + this.length) this.y = -this.length;
+                if (this.x < -this.length) this.x = width + this.length;
+                if (this.x > width + this.length) this.x = -this.length;
 
                 // Dynamic stretching based on speed
                 // The faster we scroll, the longer the streaks
@@ -76,8 +75,9 @@ export default function WindParticles() {
                 ctx.fillStyle = color;
 
                 ctx.beginPath();
-                // Draw a thin vertical rounded rectangle/line
-                ctx.roundRect(this.x, this.y, this.thickness, this.length, 2);
+                // Draw a thin HORIZONTAL rounded rectangle/line
+                // width = this.length, height = this.thickness
+                ctx.roundRect(this.x, this.y, this.length, this.thickness, 2);
                 ctx.fill();
             }
         }
