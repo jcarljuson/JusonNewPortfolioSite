@@ -24,7 +24,7 @@ export default function WindParticles() {
         let animationFrameId: number;
 
         // Configuration
-        const PARTICLE_COUNT = 100;
+        const PARTICLE_COUNT = 15; // Very subtle
         const BASE_SPEED = 0.5;
 
         class Particle {
@@ -144,7 +144,7 @@ export default function WindParticles() {
     return (
         <canvas
             ref={canvasRef}
-            className="absolute inset-0 z-0 pointer-events-none opacity-50"
+            className="absolute inset-0 -z-10 pointer-events-none opacity-30"
             // Use mix-blend-mode overlay to make it look like a subtle effect
             style={{ mixBlendMode: 'overlay' }}
         />
