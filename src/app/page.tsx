@@ -10,6 +10,7 @@ import Education from "@/components/Education";
 import Footer from "@/components/Footer";
 import Starfield from "@/components/Starfield";
 import Preloader from "@/components/Preloader";
+import ViewCounter from "@/components/ViewCounter";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,6 +28,11 @@ export default function Home() {
 
       {/* Navigation */}
       <Navigation />
+
+      {/* Global View Counter (Top Right) */}
+      <div className="fixed top-6 right-6 z-[60] hidden md:block">
+        <ViewCounter />
+      </div>
 
       {/* Sections with proper z-indexing */}
       <Hero startAnimation={!isLoading} />
