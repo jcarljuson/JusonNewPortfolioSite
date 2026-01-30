@@ -95,8 +95,16 @@ export default function Navigation() {
                         ))}
                     </div>
 
-                    {/* Right side: Social Icons */}
+                    import ViewCounter from './ViewCounter';
+
+                    // ... (existing imports)
+
+                    // ...
+
+                    {/* Right side: Social Icons + View Counter */}
                     <div className="flex items-center gap-4 shrink-0">
+                        <ViewCounter />
+                        <div className="h-4 w-px bg-white/10 hidden sm:block" /> {/* Separator */}
                         {socialLinks.map((social) => (
                             <a
                                 key={social.name}
