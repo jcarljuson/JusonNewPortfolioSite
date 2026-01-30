@@ -143,75 +143,77 @@ export default function Projects() {
                 <p className="text-secondary max-w-lg mx-auto font-normal">
                     Projects at the intersection of AI, neuroscience, and robotics.
                 </p>
-                {/* Wind Effect (Scroll Velocity Driven) */}
-                <WindParticles />
+            </div>
 
-                {/* Container */}
-                <div ref={containerRef} style={{ perspective: '1200px' }}>
-                    <div ref={cardsRef} className="flex" style={{ transformStyle: 'preserve-3d' }}>
-                        {projects.map((project, index) => (
-                            <div
-                                key={project.id}
-                                className="project-card glass-card overflow-hidden cursor-pointer group flex-shrink-0 relative"
-                                style={{
-                                    // aspectRatio: '16/10', // Handled by GSAP now
-                                    transformStyle: 'preserve-3d',
-                                }}
-                            >
-                                {/* Project Image */}
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-300"
-                                />
+            {/* Wind Effect (Scroll Velocity Driven) */}
+            <WindParticles />
 
-                                {/* Gradient Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-80" />
+            {/* Container */}
+            <div ref={containerRef} style={{ perspective: '1200px' }}>
+                <div ref={cardsRef} className="flex" style={{ transformStyle: 'preserve-3d' }}>
+                    {projects.map((project, index) => (
+                        <div
+                            key={project.id}
+                            className="project-card glass-card overflow-hidden cursor-pointer group flex-shrink-0 relative"
+                            style={{
+                                // aspectRatio: '16/10', // Handled by GSAP now
+                                transformStyle: 'preserve-3d',
+                            }}
+                        >
+                            {/* Project Image */}
+                            <img
+                                src={project.image}
+                                alt={project.title}
+                                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-300"
+                            />
 
-                                {/* Content */}
-                                <div className="relative z-10 p-6 md:p-8 h-full flex flex-col justify-end">
-                                    {/* Category */}
-                                    <span className="inline-block px-3 py-1 text-xs font-medium glass backdrop-blur-sm rounded-full mb-3 w-fit text-white border border-white/20">
-                                        {project.category}
-                                    </span>
+                            {/* Gradient Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-80" />
 
-                                    {/* Title */}
-                                    <h3 className="text-2xl md:text-3xl font-bold mb-2 group-hover:text-blue-400 transition-colors text-white">
-                                        {project.title}
-                                    </h3>
+                            {/* Content */}
+                            <div className="relative z-10 p-6 md:p-8 h-full flex flex-col justify-end">
+                                {/* Category */}
+                                <span className="inline-block px-3 py-1 text-xs font-medium glass backdrop-blur-sm rounded-full mb-3 w-fit text-white border border-white/20">
+                                    {project.category}
+                                </span>
 
-                                    {/* Description */}
-                                    <p className="text-gray-300 text-sm leading-relaxed group-hover:text-white transition-colors mb-4 line-clamp-3 md:line-clamp-none">
-                                        {project.description}
-                                    </p>
+                                {/* Title */}
+                                <h3 className="text-2xl md:text-3xl font-bold mb-2 group-hover:text-blue-400 transition-colors text-white">
+                                    {project.title}
+                                </h3>
 
-                                    {/* Tags */}
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.tags.map((tag, tagIndex) => (
-                                            <span
-                                                key={tagIndex}
-                                                className="px-3 py-1 text-xs glass backdrop-blur-sm rounded-full text-gray-300 border border-white/10"
-                                            >
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
+                                {/* Description */}
+                                <p className="text-gray-300 text-sm leading-relaxed group-hover:text-white transition-colors mb-4 line-clamp-3 md:line-clamp-none">
+                                    {project.description}
+                                </p>
+
+                                {/* Tags */}
+                                <div className="flex flex-wrap gap-2">
+                                    {project.tags.map((tag, tagIndex) => (
+                                        <span
+                                            key={tagIndex}
+                                            className="px-3 py-1 text-xs glass backdrop-blur-sm rounded-full text-gray-300 border border-white/10"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
                                 </div>
-
-                                {/* Hover border glow */}
-                                <div className="absolute inset-0 border-2 border-transparent group-hover:border-white/20 rounded-3xl transition-colors duration-300" />
                             </div>
-                        ))}
-                    </div>
-                </div>
 
-                {/* Scroll indicator (Desktop Only) */}
-                <div className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 text-secondary text-sm items-center gap-2">
-                    <span>Scroll to explore</span>
-                    <svg className="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                            {/* Hover border glow */}
+                            <div className="absolute inset-0 border-2 border-transparent group-hover:border-white/20 rounded-3xl transition-colors duration-300" />
+                        </div>
+                    ))}
                 </div>
+            </div>
+
+            {/* Scroll indicator (Desktop Only) */}
+            <div className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 text-secondary text-sm items-center gap-2">
+                <span>Scroll to explore</span>
+                <svg className="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </div>
         </section>
     );
 }
