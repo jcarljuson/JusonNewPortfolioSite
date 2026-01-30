@@ -72,7 +72,6 @@ export default function Education() {
             ref={sectionRef}
             id="education"
             className="relative py-32 bg-transparent"
-            style={{ zIndex: 50 }}
         >
             {/* Removed Global Black Background to allow mixed sections */}
 
@@ -82,12 +81,8 @@ export default function Education() {
                 {/* Education Section */}
                 <div className="mb-24 relative py-12 -mx-[calc((100vw-100%)/2)] px-[calc((100vw-100%)/2)]">
                     {/* Local Black Background & Stars */}
-                    <div className="absolute inset-0 -z-10" style={{ backgroundColor: '#000000' }}>
-                        {/* Simple Star Overlay for Black Sections */}
-                        <div className="absolute inset-0 opacity-80" style={{
-                            backgroundImage: 'radial-gradient(2px 2px at 10% 10%, white, transparent), radial-gradient(2px 2px at 20% 30%, white, transparent), radial-gradient(1px 1px at 30% 70%, white, transparent), radial-gradient(2px 2px at 40% 90%, white, transparent), radial-gradient(1.5px 1.5px at 60% 40%, white, transparent), radial-gradient(2px 2px at 80% 20%, white, transparent), radial-gradient(1px 1px at 90% 80%, white, transparent), radial-gradient(2px 2px at 50% 50%, white, transparent), radial-gradient(1px 1px at 70% 10%, white, transparent)'
-                        }} />
-                    </div>
+                    {/* Local Black Background (Stars from global canvas will invert to white here) */}
+                    <div className="absolute inset-0 -z-10" style={{ backgroundColor: '#111111' }} />
 
                     <h2 className="text-4xl md:text-5xl font-semibold mb-16 text-center text-white relative z-10">
                         Education
@@ -166,12 +161,8 @@ export default function Education() {
                 {/* Patents Section */}
                 <div className="mt-24 relative py-12 -mx-[calc((100vw-100%)/2)] px-[calc((100vw-100%)/2)]">
                     {/* Local Black Background & Stars */}
-                    <div className="absolute inset-0 -z-10" style={{ backgroundColor: '#000000' }}>
-                        {/* Simple Star Overlay */}
-                        <div className="absolute inset-0 opacity-80" style={{
-                            backgroundImage: 'radial-gradient(2px 2px at 15% 15%, white, transparent), radial-gradient(1px 1px at 25% 45%, white, transparent), radial-gradient(2px 2px at 35% 55%, white, transparent), radial-gradient(1px 1px at 55% 25%, white, transparent), radial-gradient(1.5px 1.5px at 75% 75%, white, transparent), radial-gradient(2px 2px at 85% 10%, white, transparent), radial-gradient(1px 1px at 10% 90%, white, transparent), radial-gradient(2px 2px at 40% 40%, white, transparent), radial-gradient(1.5px 1.5px at 60% 60%, white, transparent)'
-                        }} />
-                    </div>
+                    {/* Local Black Background (Stars from global canvas will invert to white here) */}
+                    <div className="absolute inset-0 -z-10" style={{ backgroundColor: '#111111' }} />
 
                     <h2 className="text-4xl md:text-5xl font-semibold mb-16 text-center text-white relative z-10">
                         Documentations & Patents
