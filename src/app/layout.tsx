@@ -1,8 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import ViewportHeight from "@/components/ViewportHeight";
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover', // Enables env(safe-area-inset-*) for in-app browsers
+};
 
 export const metadata: Metadata = {
   title: "Jcarl Juson | AI Engineer & Neuroscientist",
