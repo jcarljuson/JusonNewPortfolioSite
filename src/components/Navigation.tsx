@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { Facebook, Linkedin, Github } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
+import { useTheme } from './ThemeProvider';
+
 const navLinks = [
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
@@ -36,8 +38,11 @@ function ResearchGateIcon({ className }: { className?: string }) {
 export default function Navigation() {
     const [isVisible, setIsVisible] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [mounted, setMounted] = useState(false);
+    const { theme } = useTheme();
 
     useEffect(() => {
+        setMounted(true);
         const handleScroll = () => {
             const scrollY = window.scrollY;
             setIsVisible(scrollY > window.innerHeight * 0.5);
@@ -47,6 +52,9 @@ export default function Navigation() {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // Determine current theme (safely after hydration)
+    const currentTheme = mounted ? theme : 'dark';
 
     const scrollToSection = (href: string) => {
         const element = document.querySelector(href);
@@ -72,12 +80,11 @@ export default function Navigation() {
                 <div className="relative flex items-center justify-between">
                     {/* Left: Logo + Theme Toggle */}
                     <div className="flex items-center gap-4">
-                        {/* Always use a dark background for the pixel profile so it remains visible in light mode */}
-                        <div className="w-10 h-10 rounded-full bg-[#1a1a1a] overflow-hidden border border-white/10 shrink-0 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10 shrink-0 bg-transparent flex items-center justify-center">
                             <img
-                                src="/profile_pixel.png"
+                                src={currentTheme === 'light' ? '/profile.png' : '/profile_pixel.png'}
                                 alt="Profile"
-                                className="w-[120%] h-[120%] object-cover object-center mt-2" // Scale up slightly to fit nicely in the circle
+                                className={`object-cover object-center ${currentTheme === 'light' ? 'w-full h-full' : 'w-[120%] h-[120%] mt-2'}`}
                             />
                         </div>
                         <ThemeToggle />
