@@ -226,6 +226,15 @@ export default function About() {
                 style={{ opacity: 0 }} // Initial state
             >
                 <div className="w-full max-w-6xl pointer-events-auto pb-6 md:pb-10">
+                    
+                    {/* Mobile Swipe Indicator */}
+                    <div className="flex justify-center items-center gap-2 mb-3 md:hidden text-gray-400 text-sm font-medium animate-pulse">
+                        <span>Swipe to explore</span>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </div>
+
                     <div className="flex overflow-x-auto md:grid md:grid-cols-3 gap-4 md:gap-6 snap-x snap-mandatory hide-scrollbar md:pb-0">
                         {expertiseAreas.map((area, index) => (
                             <div key={index} className="flex-none w-[85%] md:w-auto snap-center glass-card p-4 md:p-6 flex flex-col items-center text-center backdrop-blur-md bg-white/5 border border-white/10">
