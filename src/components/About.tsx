@@ -11,7 +11,7 @@ const expertiseAreas = [
     {
         icon: Brain,
         title: 'Neuroscience',
-        description: 'Exploring the neural basis of cognition and developing brain-computer interfaces for next-generation human-machine interaction.',
+        description: 'My work focuses on unlocking the mysteries of the brain to develop next-generation technology that lets us interact with machines in entirely new ways.',
     },
     {
         icon: Cpu,
