@@ -68,7 +68,7 @@ export default function Projects() {
             });
             gsap.set(sectionRef.current, {
                 overflow: 'hidden',
-                height: 'calc(100dvh)',
+                height: 'calc(var(--vh, 1vh) * 100)',
                 position: 'relative' // Ensure pin works
             });
             gsap.set(cardsRef.current, {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import ViewportHeight from "@/components/ViewportHeight";
 
 export const metadata: Metadata = {
   title: "Jcarl Juson | AI Engineer & Neuroscientist",
@@ -131,6 +132,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+        <ViewportHeight />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

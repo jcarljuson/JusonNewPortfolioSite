@@ -69,16 +69,16 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Fix for in-app browsers (Facebook, etc.) where browser chrome eats into 100vh */
-/* dvh = dynamic viewport height, adjusts when browser UI shows/hides */
+/* Fix for in-app browsers (Facebook, Messenger, Instagram, etc.) */
+/* --vh is set by ViewportHeight.tsx to 1% of the actual visible viewport */
 .min-h-screen-safe {
-  min-height: 100vh; /* Fallback for older browsers */
-  min-height: 100dvh;
+  min-height: 100vh; /* Fallback */
+  min-height: calc(var(--vh, 1vh) * 100);
 }
 
 .h-screen-safe {
-  height: 100vh; /* Fallback for older browsers */
-  height: 100dvh;
+  height: 100vh; /* Fallback */
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 /* Glassmorphism utility */
