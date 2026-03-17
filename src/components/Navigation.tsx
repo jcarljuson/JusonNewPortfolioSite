@@ -72,11 +72,12 @@ export default function Navigation() {
                 <div className="relative flex items-center justify-between">
                     {/* Left: Logo + Theme Toggle */}
                     <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10 shrink-0">
+                        {/* Always use a dark background for the pixel profile so it remains visible in light mode */}
+                        <div className="w-10 h-10 rounded-full bg-[#1a1a1a] overflow-hidden border border-white/10 shrink-0 flex items-center justify-center">
                             <img
                                 src="/profile_pixel.png"
                                 alt="Profile"
-                                className="w-full h-full object-cover"
+                                className="w-[120%] h-[120%] object-cover object-center mt-2" // Scale up slightly to fit nicely in the circle
                             />
                         </div>
                         <ThemeToggle />
