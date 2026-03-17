@@ -181,38 +181,38 @@ export default function About() {
             {/* 1. Main Bio Content Overlay */}
             <div
                 ref={contentRef}
-                className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none px-6"
+                className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none px-4 md:px-6"
             >
                 <div className="w-full max-w-4xl pointer-events-auto">
                     {/* Header Group */}
-                    <div className="text-center mb-10">
-                        <h2 className="text-4xl md:text-5xl font-semibold mb-4 text-white">
+                    <div className="text-center mb-6 md:mb-10">
+                        <h2 className="text-3xl md:text-5xl font-semibold mb-2 md:mb-4 text-white">
                             About Me
                         </h2>
                     </div>
 
-                    <div ref={blurRef} className="glass-card p-8 md:p-10 backdrop-blur-xl">
-                        <div className="flex items-start gap-4 mb-6">
-                            <Sparkles className="w-5 h-5 text-gray-300 flex-shrink-0 mt-1" />
-                            <p className="text-white leading-relaxed font-normal">
+                    <div ref={blurRef} className="glass-card p-5 md:p-10 backdrop-blur-xl">
+                        <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                            <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-gray-300 flex-shrink-0 mt-1" />
+                            <p className="text-sm md:text-base text-white leading-relaxed font-normal">
                                 I&apos;m a <span className="font-medium text-white">Machine Learning and Data Science enthusiast/innovator</span>, passionate about building intelligent systems that connect humans, machines, and the universe.
                             </p>
                         </div>
 
-                        <div className="space-y-4 mb-6">
+                        <div className="space-y-3 md:space-y-4 mb-4 md:mb-6">
                             {bioHighlights.map((highlight, index) => (
-                                <div key={index} className="flex items-start gap-4">
-                                    <div className="w-9 h-9 rounded-lg glass flex items-center justify-center flex-shrink-0 bg-white/5 border border-white/10">
-                                        <highlight.icon className="w-4 h-4 text-gray-300" />
+                                <div key={index} className="flex items-start gap-3 md:gap-4">
+                                    <div className="w-7 h-7 md:w-9 md:h-9 rounded-lg glass flex items-center justify-center flex-shrink-0 bg-white/5 border border-white/10 mt-0.5">
+                                        <highlight.icon className="w-3.5 h-3.5 md:w-4 md:h-4 text-gray-300" />
                                     </div>
-                                    <p className="text-gray-300 leading-relaxed font-normal">{highlight.text}</p>
+                                    <p className="text-xs md:text-base text-gray-300 leading-relaxed font-normal">{highlight.text}</p>
                                 </div>
                             ))}
                         </div>
 
-                        <div className="pt-4 border-t border-white/10">
-                            <p className="text-gray-400 italic text-center text-sm font-normal">
-                                &quot;I thrive on projects that merge neuroscience, robotics, and artificial intelligence—building technology that&apos;s smart, adaptive, and deeply human-centered.&quot;
+                        <div className="pt-3 md:pt-4 border-t border-white/10">
+                            <p className="text-gray-400 italic text-center text-xs md:text-sm font-normal">
+                                &quot;I thrive on projects that merge neuroscience, robotics, and AI—building technology that&apos;s smart, adaptive, and deeply human-centered.&quot;
                             </p>
                         </div>
                     </div>
@@ -225,13 +225,13 @@ export default function About() {
                 className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none px-6"
                 style={{ opacity: 0 }} // Initial state
             >
-                <div className="w-full max-w-6xl pointer-events-auto pb-10">
-                    <div className="grid md:grid-cols-3 gap-6">
+                <div className="w-full max-w-6xl pointer-events-auto pb-4 md:pb-10">
+                    <div className="flex overflow-x-auto md:grid md:grid-cols-3 gap-4 md:gap-6 snap-x snap-mandatory hide-scrollbar pb-4 md:pb-0">
                         {expertiseAreas.map((area, index) => (
-                            <div key={index} className="glass-card p-6 flex flex-col items-center text-center backdrop-blur-md bg-white/5 border border-white/10">
-                                <area.icon className="w-8 h-8 text-gray-300 mb-3" />
-                                <h3 className="text-lg font-medium text-white mb-2">{area.title}</h3>
-                                <p className="text-sm text-gray-300 leading-relaxed">{area.description}</p>
+                            <div key={index} className="flex-none w-[85%] md:w-auto snap-center glass-card p-4 md:p-6 flex flex-col items-center text-center backdrop-blur-md bg-white/5 border border-white/10">
+                                <area.icon className="w-6 h-6 md:w-8 md:h-8 text-gray-300 mb-2 md:mb-3" />
+                                <h3 className="text-base md:text-lg font-medium text-white mb-1 md:mb-2">{area.title}</h3>
+                                <p className="text-xs md:text-sm text-gray-300 leading-relaxed">{area.description}</p>
                             </div>
                         ))}
                     </div>
