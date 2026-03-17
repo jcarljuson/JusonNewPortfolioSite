@@ -69,6 +69,18 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Fix for in-app browsers (Facebook, etc.) where browser chrome eats into 100vh */
+/* dvh = dynamic viewport height, adjusts when browser UI shows/hides */
+.min-h-screen-safe {
+  min-height: 100vh; /* Fallback for older browsers */
+  min-height: 100dvh;
+}
+
+.h-screen-safe {
+  height: 100vh; /* Fallback for older browsers */
+  height: 100dvh;
+}
+
 /* Glassmorphism utility */
 .glass {
   background: var(--glass-bg);

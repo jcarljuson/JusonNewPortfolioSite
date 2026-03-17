@@ -163,7 +163,7 @@ export default function About() {
         <section
             ref={sectionRef}
             id="about"
-            className="relative h-screen bg-[#111111] dark:bg-black overflow-hidden"
+            className="relative h-screen-safe bg-[#111111] dark:bg-black overflow-hidden"
         >
             {/* Scroll-controlled Video Background */}
             <div className="absolute z-0 w-full h-[50%] top-1/2 -translate-y-1/2 md:h-full md:top-0 md:translate-y-0 md:inset-0">

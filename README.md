@@ -1,10 +1,38 @@
-# Jcarl Juson's Portfolio
+# Jcarl Juson's Interstellar Portfolio
 
-A high-performance, visually stunning portfolio website by Jcarl Juson. Designed with an Apple-inspired "liquid glass" aesthetics in mind, deep space cosmology themes, and advanced scroll interactions.
+A high-performance, cinematic portfolio website built to showcase innovations in Machine Learning, Neuroscience, and Engineering. Designed with an "Interstellar" aesthetic, it features deep space themes, fluid physics-based animations, and a premium "Apple-like" feel.
 
 ![Hero Section](./public/screenshots/hero.png)
 
-## Tech Stack & Features
+## 🌌 Key Highlights
+
+### 1. Interactive Starfield Core
+A custom-built HTML5 Canvas starfield that serves as the visual backbone of the site.
+*   **Ambient Drift:** Stars possess individual velocity vectors, slowly drifting like cosmic dust even when idle.
+*   **Mouse Parallax:** Reacts to mouse movement (desktop) and device gyroscope (mobile) for a 3D depth effect.
+*   **Smart Blending:** Uses `mix-blend-mode: difference` to automatically invert star colors based on the background—**White Stars** in the vacuum of space, **Black Stars** on clean white pages.
+
+### 2. "Zebra" Theme Architecture
+A sophisticated hybrid theme system that breaks the monotony of traditional Dark/Light modes.
+*   **Dark Islands:** Key sections like "Education" and "Patents" maintain a cinematic **Dark Mode** appearance (Pure Black or Matte Black) even when the global theme is Light.
+*   **Matte vs. Pure:** In Light Mode, dark sections use a premium **Matte Black (#111111)** "satin" finish. In Dark Mode, they shift to **Pure Black (#000000)** for seamless OLED integration.
+*   **Global Consistency:** The "About Me" section mirrors this aesthetic, creating a cohesive rhythm of light and dark chapters throughout the scroll.
+
+### 3. Neural Boot Sequence
+An immersive site preloader mimicking a sci-fi system boot.
+*   **Theme-Aware:**
+    *   **Dark Mode:** Classic "Matrix" aesthetic (Green text on Black).
+    *   **Light Mode:** Modern clean aesthetic (Black text on White).
+*   **Sequenced Logging:** "Initializing Neural Interface...", "Calibrating Sensors..." with progress bar synchronization.
+
+### 4. 3D Cylindrical Projects Carousel
+The **Selected Works** section features a custom 3D rotary carousel powered by GSAP.
+*   **Physics-based Interaction:** Cards rotate along a Y-axis curve based on scroll progress.
+*   **Wind Particle Effect:** A high-speed canvas particle system trails behind project cards during rapid scrolling, adding a sense of speed and motion.
+
+---
+
+## 🛠️ Tech Stack
 
 *   **Framework:** [Next.js 15 (App Router)](https://nextjs.org/) - React framework for performance and SEO.
 *   **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) - Utility-first styling with custom glassmorphism, gradients, and animations.
@@ -13,34 +41,9 @@ A high-performance, visually stunning portfolio website by Jcarl Juson. Designed
 *   **Icons:** [Lucide React](https://lucide.dev/) - Clean, consistent vector icons.
 *   **Fonts:** SF Pro Display (System fallback) & Inter.
 
-## Key Highlights
+---
 
-### 1. Liquid Glass Navigation
-A dynamic, floating navigation bar that mimics the iOS "Dynamic Island". It features:
-*   **Frosted Glass Effect:** Uses `backdrop-blur-2xl` with a subtle white glossy border.
-*   **Floating Pill Shape:** Detached from the top edge for a modern feel.
-*   **Responsive Transition:** Expands and contracts based on scroll position.
-
-### 2. Cylindrical 3D Project Carousel
-The **Selected Works** section features a custom 3D rotary carousel powered by GSAP.
-*   **Physics-based Interaction:** Cards rotate along a Y-axis curve based on scroll progress.
-*   **Dynamic Scaling:** Center card is largest; side cards scaling down and fading out.
-*   **Performance:** Uses hardware-accelerated transforms (`translate3d`, `rotateY`) for 60fps performance.
-
-![Projects Section](./public/screenshots/about.png)
-
-### 3. Smart Light/Dark Mode
-A fully adaptive theme engine that preserves the cinematic feel in both modes.
-*   **Dark Mode:** Deep space black backgrounds with white text and glowing gold/amber accents.
-*   **Light Mode:** Clean white/gray gradients with high-contrast text and "fog" effects, ensuring readability without losing depth.
-
-![Footer Section](./public/screenshots/footer.png)
-
-### 4. Interactive "About Me"
-*   **Video Scrubbing:** background video scrubs precisely with scroll position.
-*   **Glass Cards:** Content floats on premium frosted glass layers.
-
-## Getting Started
+## 🚀 Getting Started
 
 1.  **Clone the repository:**
     ```bash
@@ -57,8 +60,10 @@ A fully adaptive theme engine that preserves the cinematic feel in both modes.
     npm run dev
     ```
 
-4.  **Open [http://localhost:3000](http://localhost:3000)** with your browser to see the result.
+4.  **Open [http://localhost:3000](http://localhost:3000)** with your browser to launch the interface.
 
-## Deployment
+---
+
+## 📦 Deployment
 
 Deployed on [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
