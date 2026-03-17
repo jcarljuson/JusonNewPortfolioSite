@@ -12,7 +12,7 @@ const projects = [
         id: 1,
         title: 'Exoplanet Detection',
         category: 'NASA Space Apps',
-        description: 'AI-powered analysis of Kepler telescope data to detect exoplanets using deep learning neural networks.',
+        description: 'Developed AI that powered the analysis of Kepler/K2/TESS NASA telescopes data to detect exoplanets using Advanced Machine Learning for NASA Hackaton.',
         image: '/projects/exoplanet.png',
         tags: ['Python', 'TensorFlow', 'NASA Data'],
         gradient: 'from-blue-600 to-purple-600',
