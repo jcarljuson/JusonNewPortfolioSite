@@ -80,11 +80,11 @@ export default function Navigation() {
                 <div className="relative flex items-center justify-between">
                     {/* Left: Logo + Theme Toggle */}
                     <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10 shrink-0 bg-transparent flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10 shrink-0 bg-[#1a1a1a] flex items-center justify-center">
                             <img
-                                src={currentTheme === 'light' ? '/profile.png' : '/profile_pixel.png'}
+                                src={currentTheme === 'light' ? '/Profile_Pixel2.png' : '/profile_pixel.png'}
                                 alt="Profile"
-                                className={`object-cover object-center ${currentTheme === 'light' ? 'w-full h-full' : 'w-[120%] h-[120%] mt-2'}`}
+                                className="w-[120%] h-[120%] object-cover object-center mt-2" // Both use the exact same zoom and position
                             />
                         </div>
                         <ThemeToggle />
