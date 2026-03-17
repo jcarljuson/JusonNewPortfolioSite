@@ -225,8 +225,8 @@ export default function About() {
                 className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none px-6"
                 style={{ opacity: 0 }} // Initial state
             >
-                <div className="w-full max-w-6xl pointer-events-auto pb-4 md:pb-10">
-                    <div className="flex overflow-x-auto md:grid md:grid-cols-3 gap-4 md:gap-6 snap-x snap-mandatory hide-scrollbar pb-4 md:pb-0">
+                <div className="w-full max-w-6xl pointer-events-auto pb-6 md:pb-10">
+                    <div className="flex overflow-x-auto md:grid md:grid-cols-3 gap-4 md:gap-6 snap-x snap-mandatory hide-scrollbar md:pb-0">
                         {expertiseAreas.map((area, index) => (
                             <div key={index} className="flex-none w-[85%] md:w-auto snap-center glass-card p-4 md:p-6 flex flex-col items-center text-center backdrop-blur-md bg-white/5 border border-white/10">
                                 <area.icon className="w-6 h-6 md:w-8 md:h-8 text-gray-300 mb-2 md:mb-3" />
