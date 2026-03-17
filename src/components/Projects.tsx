@@ -183,7 +183,7 @@ export default function Projects() {
                                 </h3>
 
                                 {/* Description */}
-                                <p className="text-gray-300 text-sm leading-relaxed group-hover:text-white transition-colors mb-4 line-clamp-3 md:line-clamp-none">
+                                <p className="text-gray-300 text-sm leading-relaxed group-hover:text-white transition-colors mb-4">
                                     {project.description}
                                 </p>
 
