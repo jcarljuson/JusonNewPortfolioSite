@@ -135,7 +135,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark" className="dark">
       <body className="antialiased">
         <script
           type="application/ld+json"
