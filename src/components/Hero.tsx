@@ -14,20 +14,7 @@ export default function Hero({ startAnimation = true }: HeroProps) {
     const buttonsRef = useRef<HTMLDivElement>(null);
 
     const [text, setText] = useState('');
-    const [inAppPadding, setInAppPadding] = useState(0);
     const fullText = "Jcarl Juson";
-
-    // Detect in-app browsers and set padding to clear their chrome overlay
-    useEffect(() => {
-        const ua = navigator.userAgent || '';
-        const isInAppBrowser = /FBAN|FBAV|FB_IAB|FBIOS|Instagram|Messenger|Line|Twitter|Snapchat|TikTok|Pinterest/i.test(ua);
-        
-        if (isInAppBrowser) {
-            // In-app browser detected: add padding to push content below chrome
-            // Facebook/Messenger chrome is typically 80-120px on mobile
-            setInAppPadding(100);
-        }
-    }, []);
 
     useEffect(() => {
         if (!startAnimation) return;
@@ -81,12 +68,8 @@ export default function Hero({ startAnimation = true }: HeroProps) {
     return (
         <section
             ref={containerRef}
-            className="relative min-h-screen-safe flex flex-col items-center justify-center overflow-hidden"
-            style={{
-                zIndex: 10,
-                // Push content below in-app browser chrome (Facebook, Messenger, etc.)
-                paddingTop: `calc(env(safe-area-inset-top, 0px) + ${inAppPadding}px)`,
-            }}
+            className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
+            style={{ zIndex: 10 }}
         >
             {/* Subtle Orbs */}
             <div className="orb orb-primary w-[800px] h-[800px] -top-[300px] -left-[300px]" />
@@ -109,7 +92,7 @@ export default function Hero({ startAnimation = true }: HeroProps) {
                     ref={subtitleRef}
                     className="text-xl md:text-2xl text-secondary mb-12 max-w-2xl mx-auto opacity-0 font-normal"
                 >
-                    AI Engineering & Neurotechnology Enthusiast who&apos;s building the future at the intersection of artificial and biological intelligence.
+                    AI Engineering &amp; Neurotechnology Enthusiast who&apos;s building the future at the intersection of artificial and biological intelligence.
                 </p>
 
                 {/* Buttons */}

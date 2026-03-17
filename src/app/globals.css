@@ -70,15 +70,13 @@ body {
 }
 
 /* Fix for in-app browsers (Facebook, Messenger, Instagram, etc.) */
-/* --vh is set by ViewportHeight.tsx to 1% of the actual visible viewport */
+/* The layout uses padding to push content below the overlay chrome */
 .min-h-screen-safe {
-  min-height: 100vh; /* Fallback */
-  min-height: calc(var(--vh, 1vh) * 100);
+  min-height: 100vh;
 }
 
 .h-screen-safe {
-  height: 100vh; /* Fallback */
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100vh;
 }
 
 /* Glassmorphism utility */
