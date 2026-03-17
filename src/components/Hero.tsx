@@ -92,7 +92,7 @@ export default function Hero({ startAnimation = true }: HeroProps) {
                     ref={subtitleRef}
                     className="text-xl md:text-2xl text-secondary mb-12 max-w-2xl mx-auto opacity-0 font-normal"
                 >
-                    AI Engineering &amp; Neurotechnology Enthusiast who&apos;s building the future at the intersection of artificial and biological intelligence.
+                    An aspiring AI Engineer &amp; a Neurotechnology Enthusiast who&apos;s building the future at the intersection of artificial and biological intelligence.
                 </p>
 
                 {/* Buttons */}
