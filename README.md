@@ -11,7 +11,7 @@
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 1.  **Clone the repository:**
     ```bash
@@ -29,6 +29,8 @@
     ```
 
 4.  **Open [http://localhost:3000](http://localhost:3000)** with your browser to launch the interface.
+
+Jcarl Juson
 
 ---
 
