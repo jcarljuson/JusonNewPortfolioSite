@@ -8,7 +8,7 @@
 *   **Smooth Scroll:** [Lenis](https://lenis.studiofreight.com/) - Butter-smooth scroll interpolation.
 *   **Icons:** [Lucide React](https://lucide.dev/) - Clean, consistent vector icons.
 *   **Fonts:** SF Pro Display (System fallback) & Inter.
-IM ALIVE
+IM ALIVE ggggggggg
 ---
 
 ## Getting Started
